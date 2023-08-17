@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="page-title">Inventory Management</h1>
+
+        <section id="feed-post" class="feed-section">
+            <h3 class="section-title">Inventory</h3>
+            
+            <div class="form-container">
+                <% if(locals.user){ %>
+                <form class="inventory-form" action="/inventory/create" method="POST">
+                    <input type="text" class="product-input" name="product" cols="30" rows="2" placeholder="Write here..."></textarea>
+                    <input class="quantity-input" type="number" name="quantity" required>
+                    <input class="submit-button" type="submit" value="Post">
+                </form>
+                <% } %>
+            </div>
+
+            <div class="inventory-items">
+                <% if (inventoryItems.length > 0) { %>
+                    <h4 class="inventory-title">Inventory Items:</h4>
+                    <ul class="item-list">
+                        <% for (item of inventoryItems) { %>
+                            <li class="item">
+                                Product: <%= item.name %><br>
+                                Quantity: <%= item.quantity %>
+                            </li>
+                        <% } %>
+                    </ul>
+                <% } else { %>
+                    <div class="no-items">
+                        <p>No inventory items available.</p>
+                    </div>
+                <% } %>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>

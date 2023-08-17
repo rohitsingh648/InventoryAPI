@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="../assets/css/home.css">
+</head>
+<body>
+    <div class="profile-list">
+        <h1 class="profile-heading">Hello from User Profile</h1>
+        <ul>
+            <% if(locals.user){ %>
+                <li class="username"><%= user.name %></li>
+                <li class="sign-out">
+                    <a href="/users/sign-out">Sign Out</a>
+                </li>
+            <% } else { %> 
+                <li>
+                    <a class="sign-link" href="/users/sign-in">Sign In</a>
+                </li>
+                <li>
+                    <a class="sign-link" href="/users/sign-up">Sign Up</a>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+</body>
+</html>
